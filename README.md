@@ -11,7 +11,18 @@ A plant health program on a laptop or jetson nano
 3.[torchvision](https://github.com/pytorch/vision)(only jetson nano)
 
 3.camera(usb camera or the laptop has a built-in camera)
-
+---
 # Use
+## Step 1
+download the [dataset file](https://www.kaggle.com/datasets/rashikrahmanpritom/plant-disease-recognition-dataset) and move the dataset file to the input folder
 
-As a first step, download the [dataset file](https://www.kaggle.com/datasets/rashikrahmanpritom/plant-disease-recognition-dataset) and move the dataset file to the input folder
+## Step 2
+Go to the src folder
+```
+cd src
+```
+Run train.py Python file
+```
+python train.py -epochs 10
+```
+**Note:**```-epochs: The number of training sessions is set here to 10, which can be modified by yourself```
