@@ -26,3 +26,28 @@ Run train.py Python file
 python train.py -epochs 10
 ```
 **Note:**```-epochs: The number of training sessions is set here to 10, which can be modified by yourself```
+
+## Step 3
+Now we can run the Camera Video Detection Plant Health program
+Go to the src folder second
+```
+cd src
+```
+Run test.py Python file
+```
+python test.py
+```
+**Note:**```After running, the camera will be turned on. Please make sure that the opencv video settings are correct. For video settings, please jump to the Additional settings location```
+
+Now you can see the recognition result and probability in the upper left corner of the screen, and have fun
+
+# Additional settings
+
+If you report an error when displaying the video screen, it may be because OpenCV cannot find the video display, and you need to modify the src/test.py file
+## laptop
+If the built-in camera
+
+
+
+
+
