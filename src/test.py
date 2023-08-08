@@ -14,34 +14,12 @@ IMAGE_RESIZE = 224
 NUM_WORKERS = 4
 CLASS_NAMES = ['Healthy', 'Powdery', 'Rust']
 
-# Validation transforms
-def get_test_transform(image_size):
-    test_transform = transforms.Compose([
-        transforms.Resize((image_size, image_size)),
-        transforms.ToTensor(),
-        transforms.Normalize(
-            mean=[0.485, 0.456, 0.406],
-            std=[0.229, 0.224, 0.225]
-            )
-    ])
-    return test_transform
-
-def denormalize(
-    x, 
-    mean=[0.485, 0.456, 0.406], 
-    std=[0.229, 0.224, 0.225]
-):
-    for t, m, s in zip(x, mean, std):
-        t.mul_(s).add_(m)
-    return torch.clamp(x, 0, 1)
-
-def test(model, device, test_result_save_dir=None):
+def test(model, device):
     """
     Function to test the trained model on live video stream.
 
     :param model: The trained model.
     :param device: The computation device.
-    :param test_result_save_dir: Directory to save test results (optional).
 
     Returns:
         None
@@ -49,10 +27,6 @@ def test(model, device, test_result_save_dir=None):
     model.eval()
     print('Starting live video stream...')
     cap = cv2.VideoCapture(0)  # 0 represents the default camera (webcam)
-    
-    if test_result_save_dir:
-        os.makedirs(test_result_save_dir, exist_ok=True)
-
     with torch.no_grad():
         while True:
             ret, frame = cap.read()
@@ -85,10 +59,6 @@ def test(model, device, test_result_save_dir=None):
             # Show the frame with predictions.
             cv2.imshow('Live Video Stream', frame)
 
-            if test_result_save_dir:
-                save_path = os.path.join(test_result_save_dir, f'frame_{counter}.jpg')
-                cv2.imwrite(save_path, frame)
-
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
@@ -106,4 +76,3 @@ if __name__ == '__main__':
     model.load_state_dict(checkpoint['model_state_dict'])
 
     test(model, DEVICE)
-
