@@ -44,9 +44,8 @@ Now you can see the recognition result and probability in the upper left corner 
 # Additional settings
 
 If you report an error when displaying the video screen, it may be because OpenCV cannot find the video display, and you need to modify the src/test.py file
-## laptop
-If the built-in camera
-
+## camera
+If using an external camera,please modify cv2 for 40 lines. VideoCapture(0), change 0 to 1
 
 
 
