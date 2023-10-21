@@ -10,7 +10,8 @@ A plant health program on a laptop or jetson nano
 
 3.[torchvision](https://github.com/pytorch/vision)(only jetson nano)
 
-3.camera(usb camera or the laptop has a built-in camera)
+4.camera(usb camera or the laptop has a built-in camera)
+
 ---
 # Use
 ## Step 1
